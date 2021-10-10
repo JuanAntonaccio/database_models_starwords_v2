@@ -38,10 +38,25 @@ class Personajes(Base):
     __tablename__='personajes'
     id = Column(Integer, primary_key=True)
     name = Column(String(50), nullable=False)
+    height = Column(String(50), nullable=False)
+    mass = Column(String(50), nullable=False)
+    hair_color = Column(String(50), nullable=False)
+    skin_color = Column(String(50), nullable=False)
+    eye_color = Column(String(50), nullable=False)
+    birth_year = Column(String(50), nullable=False)
 
 class Planetas(Base):
     __tablename__='planetas'
     id = Column(Integer, primary_key=True)
     name = Column(String(50), nullable=False)
+    rotation_period = Column(String(50), nullable=False)
+    orbital_period = Column(String(50), nullable=False)
+    diameter = Column(String(50), nullable=False)
+    climate = Column(String(50), nullable=False)
+    gravity = Column(String(50), nullable=False)
+    terrain = Column(String(50), nullable=False)
+    surface_water = Column(String(50), nullable=False)
+    population = Column(String(50), nullable=False)
+
 ## Draw from SQLAlchemy base
 render_er(Base, 'diagram.png')
