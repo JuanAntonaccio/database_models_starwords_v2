@@ -37,9 +37,11 @@ class Favoritos(Base):
 class Personajes(Base):
     __tablename__='personajes'
     id = Column(Integer, primary_key=True)
+    name = Column(String(50), nullable=False)
 
 class Planetas(Base):
     __tablename__='planetas'
     id = Column(Integer, primary_key=True)
+    name = Column(String(50), nullable=False)
 ## Draw from SQLAlchemy base
 render_er(Base, 'diagram.png')
