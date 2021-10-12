@@ -1,11 +1,11 @@
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String, Enum
+from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from eralchemy import render_er
-import enum
+
 
 Base = declarative_base()
 
@@ -18,21 +18,27 @@ class Usuarios(Base):
     email = Column(String(100), nullable=False)
     pasword = Column(String(100), nullable=False)
 
-class Tipos(enum.Enum):
-    personaje = 1   
-    planeta = 2
 
-class Favoritos(Base):
-    __tablename__ = 'favoritos'
+class Favoritos_perso(Base):
+    __tablename__ = 'favoritos_perso'
     # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     usuario_id = Column(Integer, ForeignKey('usuarios.id'))
-    favorito_id = Column(Integer, nullable=False)
-    tipo = Column(Enum(Tipos), nullable=False)
+    perso_id = Column(Integer, ForeignKey('personajes.id'))
+    
 
     def to_dict(self):
         return {}
+
+class Favoritos_plane(Base):
+    __tablename__ = 'favoritos_plane'
+    # Here we define columns for the table address.
+    # Notice that each column is also a normal Python instance attribute.
+    id = Column(Integer, primary_key=True)
+    usuario_id = Column(Integer, ForeignKey('usuarios.id'))
+    plane_id = Column(Integer, ForeignKey('planetas.id'))
+
 
 class Personajes(Base):
     __tablename__='personajes'
